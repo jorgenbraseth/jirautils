@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Issue Links</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/jiralinks.css"/>
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.min.css"/>
+    <link rel="stylesheet" href="js/lib/minicolors/jquery.minicolors.css"/>
+
+    <script src="js/lib/jquery-2.0.2.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.js"></script>
+    <script src="js/lib/vivagraph.js"></script>
+
+    <script src="js/lib/minicolors/jquery.minicolors.js"></script>
+
+    <script src="js/lib/jquery.total-storage.js"></script>
+    <script type="text/javascript" src="js/lib/signals.min.js"></script>
+    <script type="text/javascript" src="js/lib/hasher.min.js"></script>
+
+    <script src="js/config.js" language="JavaScript"></script>
+    <script src="js/jiralinks.js" language="JavaScript"></script>
+    <script src="js/convert_data.js" language="JavaScript"></script>
+    <script src="js/graphics.js" language="JavaScript"></script>
+
+</head>
+<body>
+<svg style="height: 1px; width: 1px">
+    <defs>
+        <marker id="arrow" viewBox="0 0 20 20" refX="-30" refY="10"
+                markerUnits="strokeWidth" orient="auto"
+                markerWidth="4" markerHeight="3">
+            <polyline points="0,10 17,0 16,10 17,20" fill="white"/>
+        </marker>
+    </defs>
+</svg>
+
+<div id="graph1"></div>
+<div id="tooltip">Tooltip</div>
+<div id="search">
+    <input id="searchTerm" type="search" placeholder="Skriv in JIRA-s&oslash;k" onchange="newSearch()"/>
+    <input type="checkbox" class="toggleNodeType" data-node-type="nodes" checked/>Issues
+    <input type="checkbox" class="toggleNodeType" data-node-type="fixVersions" checked/>Versions
+    <input type="checkbox" class="toggleNodeType" data-node-type="components" checked/>Components
+    <input type="checkbox" class="toggleNodeType" data-node-type="people" checked/>People
+    <input type="hidden" id="bgcolor" value="#db913d">
+
+    <div id="springLengthSlider"></div>
+</div>
+
+
+</body>
+</html>

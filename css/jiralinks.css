@@ -1,0 +1,31 @@
+/*
+Icons from:
+  http://www.iconfinder.com/search/?q=iconset%3Apaper
+  http://www.iconfinder.com/search/?q=iconset%3Akids
+  */
+
+body {
+    background-color: #fff;
+}
+
+
+div#tooltip {
+    position: absolute;
+    background: blue;
+    top: 0;
+    left: 0;
+    display: none;
+}
+div#search {
+    position: absolute;
+    top: 1.5em;
+    background-color: rgba(255,255,255,0.6);
+    padding: .3em;
+    border-radius: .5em;
+    box-shadow: 1px 1px 8px -3px black;
+    border: 1px solid black;
+}
+#searchTerm {
+    opacity: 0.8;
+    width: 40em;
+}
