@@ -1,6 +1,6 @@
 var rootIssueUrl = "https://jira.atlassian.com/browse/";
 var jql = "";
-var maxResults = "15";
+var maxResults = "150";
 var themeRoot = "img/theme2";
 
 var rootUrl = "https://jira.atlassian.com/rest/api/2/search?maxResults=";
@@ -59,4 +59,11 @@ var LINK_STYLES = {
         strokeWidth: 1,
         style:"2"
     }
+};
+
+
+var COMPONENT_IDS = {
+    "Component 1":"#eksut",
+    "Lee 2":"#magnet",
+    "Roy":"#iris"
 };

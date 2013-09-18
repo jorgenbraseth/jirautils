@@ -23,16 +23,12 @@
     <script src="js/graphics.js" language="JavaScript"></script>
 </head>
 <body>
-<div>
-    <object data="img/drawing.svg" type="image/svg+xml" id="drawing"></object>
+<div id="graphicsWrapper">
+    <object data="img/mapping.svg" type="image/svg+xml" id="drawing"></object>
 </div>
 <div id="tooltip">Tooltip</div>
 <div id="search">
     <input id="searchTerm" type="search" placeholder="Skriv in JIRA-s&oslash;k" onchange="newSearch()"/>
-    <input type="checkbox" class="toggleNodeType" data-node-type="nodes" checked />Issues
-    <input type="checkbox" class="toggleNodeType" data-node-type="fixVersions" checked />Versions
-    <input type="checkbox" class="toggleNodeType" data-node-type="components" checked />Components
-    <input type="checkbox" class="toggleNodeType" data-node-type="people" checked />People
 </div>
 
 </body>
