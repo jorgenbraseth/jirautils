@@ -1,9 +1,9 @@
-var rootIssueUrl = "https://aurora/jira/browse/";
+var rootIssueUrl = "https://jira.atlassian.com/browse/";
 var jql = "";
-var maxResults = "150";
+var maxResults = "15";
 var themeRoot = "img/theme2";
 
-var rootUrl = "https://aurora/jira/rest/api/2/search?maxResults=";
+var rootUrl = "https://jira.atlassian.com/rest/api/2/search?maxResults=";
 var ICON_SET = {
     dependantIssue: themeRoot + "/issue_dependent.png",
     dependantIssue_done: themeRoot + "/issue_dependent_done.png",

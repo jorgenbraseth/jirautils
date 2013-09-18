@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Issue Draw</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="css/jiralinks.css"/>
+
+    <script src="js/lib/jquery-2.0.2.js"></script>
+    <script src="js/lib/jquery-ui-1.10.3.custom.js"></script>
+    <script src="js/lib/vivagraph.js"></script>
+    <script type="text/javascript" src="js/lib/signals.min.js"></script>
+    <script type="text/javascript" src="js/lib/hasher.min.js"></script>
+
+
+    <script src="js/config.js" language="JavaScript"></script>
+    <script src="js/jiralinks2.js" language="JavaScript"></script>
+    <script src="js/convert_data.js" language="JavaScript"></script>
+    <script src="js/graphics.js" language="JavaScript"></script>
+</head>
+<body>
+<div>
+    <object data="img/drawing.svg" type="image/svg+xml" id="drawing"></object>
+</div>
+<div id="tooltip">Tooltip</div>
+<div id="search">
+    <input id="searchTerm" type="search" placeholder="Skriv in JIRA-s&oslash;k" onchange="newSearch()"/>
+    <input type="checkbox" class="toggleNodeType" data-node-type="nodes" checked />Issues
+    <input type="checkbox" class="toggleNodeType" data-node-type="fixVersions" checked />Versions
+    <input type="checkbox" class="toggleNodeType" data-node-type="components" checked />Components
+    <input type="checkbox" class="toggleNodeType" data-node-type="people" checked />People
+</div>
+
+</body>
+</html>
