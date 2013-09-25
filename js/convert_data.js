@@ -6,8 +6,15 @@ function createIssueNode(jiraIssue, inSet) {
         type: jiraIssue.fields.issuetype,
         priority: jiraIssue.fields.priority,
         url: rootIssueUrl + jiraIssue.key,
-        nodeType: inSet ? "issue":"dependantIssue"
+        nodeType: inSet ? "issue":"dependantIssue",
+        estimat: jiraIssue.fields.timeestimate,
+        poengestimat: jiraIssue.fields.customfield_10031
     }
+}
+
+function removeDependantIssues() {
+    var a = $.map(graphData.nodes,function(it){if(it.nodeType=="dependantIssue"){ return it}})
+    removeNodes(graph, a)
 }
 
 function createNodes(issues) {
@@ -194,14 +201,6 @@ function makePeopleLinksForIssue(issue) {
             type: "assignee"
         });
     }
-//    if(issue.fields.reporter){
-//        person = issue.fields.reporter;
-//        links.push({
-//            from: issue.key,
-//            to: person.name,
-//            type: "reporter"
-//        });
-//    }
 
     return links;
 }

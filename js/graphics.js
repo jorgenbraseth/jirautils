@@ -24,6 +24,30 @@ function makeIssueNodeGraphic(node) {
 
         nodeGraphic.append(typeIcon);
     }
+
+    if(node.data.poengestimat != undefined) {
+        var estimatedPoints = node.data.poengestimat;
+        var height = 1 + (12 * estimatedPoints);
+        var disc = Viva.Graph.svg("rect")
+            .attr("height", height)
+            .attr("width",5)
+            .attr("y",15-height)
+            .attr("x",-20)
+            .attr("fill","rgba(0,0,0,0.6)");
+        nodeGraphic.append(disc)
+    }
+    if(node.data.estimat != undefined) {
+        var estimatedWeeks = node.data.estimat / 36000;
+        var height = 1 + (4 * estimatedWeeks);
+        var disc = Viva.Graph.svg("rect")
+            .attr("height", height)
+            .attr("width",5)
+            .attr("y",15-height)
+            .attr("x",-25)
+            .attr("fill","rgba(255,255,0,0.6)");
+        nodeGraphic.append(disc)
+    }
+
     var label = Viva.Graph.svg('g');
     var name = makeLabel(node.id, 35);
     var summary = makeLabel(node.data.summary, 50);

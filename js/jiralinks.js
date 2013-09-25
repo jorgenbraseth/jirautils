@@ -154,11 +154,15 @@ function initGraph() {
 function handleChanges(newHash, oldHash) {
     jql = newHash;
     $("#searchTerm").val(jql)
+    document.title = jql
     graph.clear();
     update(graph);
 }
 
 function invertColor(hexTripletColor) {
+    if(hexTripletColor == null) {
+        return null;
+    }
     var color = hexTripletColor;
     color = color.substring(1);           // remove #
     color = parseInt(color, 16);          // convert to integer
@@ -178,7 +182,7 @@ $(function () {
 
     $("#springLengthSlider").slider({
         range: "min",
-        value: 0.00008,
+        value: 0.00018,
         min: 0.00001,
         max: 0.0005,
         step: 0.00001,
