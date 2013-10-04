@@ -2,6 +2,8 @@ var rootIssueUrl = "https://aurora/jira/browse/";
 var jql = "";
 var maxResults = "1500";
 var themeRoot = "img/theme2";
+var DRAWING_IMAGE_FILE = "img/components.svg"
+var DRAWING_HIGHLIGHT_FIELD = "components"
 
 var rootUrl = "https://aurora/jira/rest/api/2/search?maxResults=";
 var ICON_SET = {
@@ -68,12 +70,16 @@ var COMPONENT_IDS = {
 	"SL Grunnlagsdata": "#slgld",
 	"DVH Grunnlagsdata": "#dvhgld",
 	"Digitalmottak": "#eksinn",
-	"Ekstern kommunikasjon": "#eksinn",
-	"Ikke-funksjonelle krav": "#ikkefunksjonellekrav",
+	"Ekstern kommunikasjon": "#eksternkommunikasjon",
+    "Ekstern Utsending": "#eksternutsending",
+    "Meldingsproduksjon": "#meldingsproduksjon",
+	"Ikke-funksjonelle krav": "#kryssfunksjonellekrav",
 	"Magnet Web": "#magnetweb",
+    "Magnet Felles": "#magnet",
+    "Magnet-EDAG-testtool": "#magnet",
 	"Oppslagstjeneste": "#oppslagstjeneste",
-	"Partsregister": "#preg",
-	"Partsregister import": "#preg",
+	"Partsregister": "#partsregister",
+	"Partsregister import": "#partsregisterimport",
 	"Skatteinfo": "#boks",
 	"Skatteinfo BOKS": "#boks",
 	"Skatteinfo IRIS": "#iris",
@@ -82,5 +88,5 @@ var COMPONENT_IDS = {
 	"Magnet-EDAG": "#magnet",
 	"Magnet-Mottak": "#magnet",
 	"Manuell identifisering": "#akuweb",
-	"SI Grunnlagsdata": "#irisrapportering",
+	"SI Grunnlagsdata": "#irisrapportering"
 };

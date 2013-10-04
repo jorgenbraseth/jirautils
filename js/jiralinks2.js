@@ -59,19 +59,21 @@ function componentFromName(name) {
     }
 }
 function highlightElement() {
-    if(this.style.fill.substr(0,15) == "#linearGradient") {
-        this.style.fill = "#ffeeaa"
+    if(this.style){
+        this.style.fill = "#9f6";
     }
     $(this).children().each(function () {
         highlightElement.call(this);
     });
 }
 function highlight(element) {
+    console.log("Highlighting:");
+    console.log(element);
     if(element){
-        element.each(function () {
-            $(this).children().each(function () {
-                highlightElement.call(this);
-            });
+        element.find("path").each(function () {
+            highlightElement.call(this);
+//            $(this).children().each(function () {
+//            });
         });
     }
 }
@@ -88,7 +90,7 @@ function update() {
     $.getJSON(fullUrl, {}, function (data) {
         graphData = makeGraphData(data.issues);
         console.log(graphData);
-        $.each(graphData.components, function (idx, component) {
+        $.each(graphData[DRAWING_HIGHLIGHT_FIELD], function (idx, component) {
             var element = componentFromName(component.id);
             highlight(element);
         });
@@ -109,7 +111,7 @@ function handleChanges(newHash, oldHash) {
 }
 
 function refreshGraphics() {
-    var graphics = $("object").attr("data","img/mapping.svg")
+    var graphics = $("object").attr("data",DRAWING_IMAGE_FILE)
     graphics.remove();
     $("#graphicsWrapper").append(graphics);
 

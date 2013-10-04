@@ -43,12 +43,12 @@
 <div id="tooltip">Tooltip</div>
 <div id="search">
     <input id="searchTerm" type="search" placeholder="Skriv in JIRA-s&oslash;k" onchange="newSearch()"/>
+    <button onclick="removeDependantIssues()">Fjern avhengige oppgaver</button>
     <input type="checkbox" class="toggleNodeType" data-node-type="nodes" checked/>Issues
     <input type="checkbox" class="toggleNodeType" data-node-type="fixVersions" checked/>Versions
     <input type="checkbox" class="toggleNodeType" data-node-type="components" checked/>Components
     <input type="checkbox" class="toggleNodeType" data-node-type="people" checked/>People
     <input type="hidden" id="bgcolor" value="#db913d">
-
     <div id="springLengthSlider"></div>
 </div>
 
