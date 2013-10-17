@@ -1,53 +1,3 @@
-var NODES_TO_SHOW = {
-    nodes: true,
-    fixVersions: true,
-    people: true,
-    components: true
-};
-
-function upsertNode(node, graph) {
-    if (graph.getNode(node.id) == undefined) {
-        node.ui = graph.addNode(node.id, node);
-    }
-}
-function makeLink(link, graph) {
-    if (graph.getNode(link.from) && graph.getNode(link.to)) {
-        link.ui = graph.addLink(link.from, link.to, link);
-    }
-}
-function addNodes(graphData, graph) {
-    $.each(graphData.nodes, function (idx, node) {
-        upsertNode(node, graph);
-    });
-    $.each(graphData.issueLinks, function (idx, link) {
-        link.ui = graph.addLink(link.from, link.to, link);
-    });
-}
-function addVersions(graphData, graph) {
-    $.each(graphData.fixVersions, function (idx, version) {
-        upsertNode(version, graph);
-    });
-    $.each(graphData.versionLinks, function (idx, link) {
-        makeLink(link, graph);
-    });
-}
-function addPeople(graphData, graph) {
-    $.each(graphData.people, function (idx, person) {
-        upsertNode(person, graph);
-    });
-    $.each(graphData.peopleLinks, function (idx, link) {
-        makeLink(link, graph);
-    });
-}
-function addComponents(graphData, graph) {
-    $.each(graphData.components, function (idx, component) {
-        upsertNode(component, graph);
-    });
-    $.each(graphData.componentLinks, function (idx, link) {
-        makeLink(link, graph);
-    });
-}
-
 function newSearch() {
     hasher.setHash($("#searchTerm").val());
 }
@@ -58,23 +8,20 @@ function componentFromName(name) {
         return drawing().find(id);
     }
 }
-function highlightElement() {
-    if(this.style){
-        this.style.fill = "#9f6";
+function highlightElement(elm) {
+    if( elm.css("fill") ){
+        var red = Math.round(Math.random() * 155)+100;
+        var green = Math.round(Math.random() * 155)+100;
+        var blue = Math.round(Math.random() * 155)+100;
+        elm.css("fill","rgb("+red+","+green+","+blue+")");
     }
-    $(this).children().each(function () {
-        highlightElement.call(this);
-    });
+
+    window.setTimeout(function(){highlightElement(elm)},Math.random()*200);
 }
+
 function highlight(element) {
-    console.log("Highlighting:");
-    console.log(element);
     if(element){
-        element.find("path").each(function () {
-            highlightElement.call(this);
-//            $(this).children().each(function () {
-//            });
-        });
+        highlightElement(element);
     }
 }
 
@@ -85,9 +32,10 @@ function update() {
     var fullUrl = rootUrl + maxResults + "&jql=" + jql;
     refreshGraphics();
     $("object").css("visibility","hidden");
-    var loadingtext = $("<br/><span>Searching...</span>")
-    $("#graphicsWrapper").append(loadingtext)
+    var loadingtext = $("<br/><span>Searching...</span>");
+    $("#graphicsWrapper").append(loadingtext);
     $.getJSON(fullUrl, {}, function (data) {
+        $("object").css("visibility","visible");
         graphData = makeGraphData(data.issues);
         console.log(graphData);
         $.each(graphData[DRAWING_HIGHLIGHT_FIELD], function (idx, component) {
@@ -98,7 +46,7 @@ function update() {
             console.log(error);
             alert("Something went wrong!\n\n"+error.responseJSON.errorMessages)
         }).complete(function(){
-            $("object").css("visibility","visible")
+            $("object").css("visibility","visible");
             loadingtext.remove();
         })
 }
@@ -106,12 +54,12 @@ function update() {
 //handle hash changes
 function handleChanges(newHash, oldHash) {
     jql = newHash;
-    $("#searchTerm").val(jql)
+    $("#searchTerm").val(jql);
     update();
 }
 
 function refreshGraphics() {
-    var graphics = $("object").attr("data",DRAWING_IMAGE_FILE)
+    var graphics = $("object").attr("data",DRAWING_IMAGE_FILE);
     graphics.remove();
     $("#graphicsWrapper").append(graphics);
 

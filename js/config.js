@@ -2,8 +2,8 @@ var rootIssueUrl = "https://aurora/jira/browse/";
 var jql = "";
 var maxResults = "1500";
 var themeRoot = "img/theme2";
-var DRAWING_IMAGE_FILE = "img/components.svg"
-var DRAWING_HIGHLIGHT_FIELD = "components"
+var DRAWING_IMAGE_FILE = "img/components_new.svg";
+var DRAWING_HIGHLIGHT_FIELD = "components";
 
 var rootUrl = "https://aurora/jira/rest/api/2/search?maxResults=";
 var ICON_SET = {
@@ -69,24 +69,82 @@ var COMPONENT_IDS = {
 	"Arbeidsflate": "#arbeidsflaten",
 	"SL Grunnlagsdata": "#slgld",
 	"DVH Grunnlagsdata": "#dvhgld",
-	"Digitalmottak": "#eksinn",
+	"Digitalmottak": "#eksterntmottak",
 	"Ekstern kommunikasjon": "#eksternkommunikasjon",
     "Ekstern Utsending": "#eksternutsending",
     "Meldingsproduksjon": "#meldingsproduksjon",
 	"Ikke-funksjonelle krav": "#kryssfunksjonellekrav",
 	"Magnet Web": "#magnetweb",
-    "Magnet Felles": "#magnet",
-    "Magnet-EDAG-testtool": "#magnet",
+    "Magnet Felles": "#magnetfelles",
+    "Magnet-EDAG-testtool": "#edagtesttool",
 	"Oppslagstjeneste": "#oppslagstjeneste",
-	"Partsregister": "#partsregister",
-	"Partsregister import": "#partsregisterimport",
-	"Skatteinfo": "#boks",
+	"Partsregister": "#preg",
+	"Partsregister import": "#pimp",
+	"Skatteinfo": "#skatteinfo",
 	"Skatteinfo BOKS": "#boks",
 	"Skatteinfo IRIS": "#iris",
 	"Skatteinfo IRIS-rapportering": "#irisrapportering",
 	"Virksomhetsprosesslogg": "#vpl",
-	"Magnet-EDAG": "#magnet",
-	"Magnet-Mottak": "#magnet",
+	"Magnet-EDAG": "#magnetamelding",
+	"Magnet-Mottak": "#magnetgld",
 	"Manuell identifisering": "#akuweb",
-	"SI Grunnlagsdata": "#irisrapportering"
+	"SI Grunnlagsdata": "#si",
+    "Manntall": "#manntall",
+    "OECD": "#oecd",
+    "Konto-konto": "#kontokonto"
 };
+
+fakeit = true;
+var fakeData = { issues: [ {
+            fields:{ issuelinks:[], fixVersions:[], components:[
+                {name: "Skatteinfo IRIS"},
+                {name: "AKU-web"},
+                {name: "Arbeidsflate"},
+                {name: "SL Grunnlagsdata"},
+                {name: "DVH Grunnlagsdata"},
+                {name: "Digitalmottak"},
+                {name: "Ekstern kommunikasjon"},
+                {name: "Ekstern Utsending"},
+                {name: "Meldingsproduksjon"},
+                {name: "Ikke-funksjonelle krav"},
+                {name: "Magnet Web"},
+                {name: "Magnet Felles"},
+                {name: "Magnet-EDAG-testtool"},
+                {name: "Oppslagstjeneste"},
+                {name: "Partsregister"},
+                {name: "Partsregister import"},
+                {name: "Skatteinfo"},
+                {name: "Skatteinfo BOKS"},
+                {name: "Skatteinfo IRIS"},
+                {name: "Skatteinfo IRIS-rapportering"},
+                {name: "Virksomhetsprosesslogg"},
+                {name: "Magnet-EDAG"},
+                {name: "Magnet-Mottak"},
+                {name: "Manuell identifisering"},
+                {name: "SI Grunnlagsdata"},
+                {name: "Manntall"},
+                {name: "Oecd"},
+                {name: "Konto-konto"},
+                {name: "Skatteinfo"}
+                ]} } ] };
+
+if (fakeit) {
+    $.getJSON = function(url, data, callback){
+        console.log("Faking XHR!");
+
+        window.setTimeout(function(){callback(fakeData);},500);
+        var xhr = {
+            success: function () {
+                return this
+            },
+            fail: function () {
+                return this
+            },
+            complete: function (f) {
+                window.setTimeout(f,1000);
+                return this;
+            }
+        };
+        return  xhr;
+    }
+}
